@@ -7,9 +7,10 @@ import { Loader2, CheckCircle } from "lucide-react";
 interface LeadFormProps {
     variant?: "inline" | "modal" | "hero";
     className?: string;
+    themeColor?: "blue" | "orange" | "green";
 }
 
-export default function LeadForm({ variant = "inline", className = "" }: LeadFormProps) {
+export default function LeadForm({ variant = "inline", className = "", themeColor = "blue" }: LeadFormProps) {
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -129,7 +130,11 @@ Program: ${program || "General"}`;
             <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-lg shadow-lg hover:shadow-brand-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className={`w-full text-white font-bold py-3.5 rounded-lg shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed
+                    ${themeColor === "orange" ? "bg-orange-600 hover:bg-orange-700 hover:shadow-orange-500/25" :
+                        themeColor === "green" ? "bg-green-600 hover:bg-green-700 hover:shadow-green-500/25" :
+                            "bg-brand-600 hover:bg-brand-700 hover:shadow-brand-500/25"
+                    }`}
             >
                 {isLoading ? (
                     <>

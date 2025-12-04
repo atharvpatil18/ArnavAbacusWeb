@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ProgramCardProps {
     title: string;
@@ -7,7 +10,8 @@ interface ProgramCardProps {
     ageGroup: string;
     features: string[];
     href: string;
-    color?: "blue" | "orange" | "green";
+    color?: "blue" | "orange" | "green" | "brand";
+    delay?: number;
 }
 
 export default function ProgramCard({
@@ -17,6 +21,7 @@ export default function ProgramCard({
     features,
     href,
     color = "blue",
+    delay = 0,
 }: ProgramCardProps) {
     const colorStyles = {
         blue: {
@@ -40,12 +45,24 @@ export default function ProgramCard({
             button: "bg-green-600 hover:bg-green-700",
             icon: "text-green-500",
         },
+        brand: {
+            bg: "bg-brand-50",
+            text: "text-brand-600",
+            border: "border-brand-100",
+            button: "bg-brand-600 hover:bg-brand-700",
+            icon: "text-brand-500",
+        },
     };
 
     const styles = colorStyles[color];
 
     return (
-        <div className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border ${styles.border} flex flex-col h-full group`}>
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay, duration: 0.5 }}
+            className={`bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-2 ${styles.border} flex flex-col h-full group`}
+        >
             <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${styles.bg} ${styles.text} w-fit mb-4`}>
                 {ageGroup}
             </div>
@@ -72,6 +89,6 @@ export default function ProgramCard({
                 Learn More
                 <ArrowRight className="w-4 h-4" />
             </Link>
-        </div>
+        </motion.div>
     );
 }

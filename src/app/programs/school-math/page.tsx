@@ -1,88 +1,93 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
-import { GraduationCap, Book, Pencil, Users } from "lucide-react";
+import { CheckCircle2, BookOpen, GraduationCap, Target } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function SchoolMathPage() {
+    const benefits = [
+        { icon: BookOpen, title: "Concept Clarity", desc: "Deep understanding of fundamental mathematical concepts." },
+        { icon: Target, title: "Exam Oriented", desc: "Focused preparation for school exams and boards." },
+        { icon: GraduationCap, title: "Strong Foundation", desc: "Building blocks for future academic success." },
+    ];
+
     return (
         <main className="min-h-screen bg-slate-50">
             <Navbar />
 
             {/* Hero */}
-            <section className="bg-green-600 pt-32 pb-20 text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/hero-bg-pattern.svg')] opacity-10"></div>
+            <section className="bg-green-600 text-white py-20 lg:py-32 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
                 <div className="container mx-auto px-4 relative z-10">
-                    <div className="max-w-3xl">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                            Excel in School Mathematics
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="max-w-3xl"
+                    >
+                        <span className="text-green-200 font-semibold tracking-wider uppercase text-sm mb-4 block">
+                            For Class 1-10
+                        </span>
+                        <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+                            Excel in <span className="text-green-400">School Maths</span>
                         </h1>
-                        <p className="text-xl text-green-100 mb-8 leading-relaxed">
-                            Comprehensive tuition and support for Grade 1 to 10. Build a strong foundation and score higher marks in school exams.
+                        <p className="text-xl text-green-100 mb-8 leading-relaxed max-w-2xl">
+                            Comprehensive tuition and support for school mathematics to ensure your child stays ahead in class.
                         </p>
-                        <a href="#enroll" className="bg-white text-green-600 hover:bg-green-50 px-8 py-3 rounded-full font-bold transition-colors inline-block">
-                            Book a Free Trial
-                        </a>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Content */}
-            <section className="py-20">
-                <div className="container mx-auto px-4">
-                    <div className="grid lg:grid-cols-3 gap-12">
-                        {/* Left: Details */}
-                        <div className="lg:col-span-2 space-y-12">
-                            <div>
-                                <h2 className="text-3xl font-bold text-slate-900 mb-6">Academic Excellence</h2>
-                                <p className="text-slate-600 leading-relaxed mb-6">
-                                    Our School Math program is aligned with the CBSE/ICSE/State Board curriculum. We focus on concept clarity, regular practice, and exam-oriented preparation to ensure your child stays ahead in class.
-                                </p>
-                                <div className="grid sm:grid-cols-2 gap-6">
-                                    {[
-                                        { icon: GraduationCap, title: "Board Aligned", desc: "CBSE, ICSE, and State Board syllabus." },
-                                        { icon: Book, title: "Concept Clarity", desc: "Deep understanding of fundamentals." },
-                                        { icon: Pencil, title: "Homework Help", desc: "Daily assistance with school assignments." },
-                                        { icon: Users, title: "Small Batches", desc: "Individual attention for every student." },
-                                    ].map((item, i) => (
-                                        <div key={i} className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                                            <item.icon className="w-8 h-8 text-green-500 mb-4" />
-                                            <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                                            <p className="text-sm text-slate-600">{item.desc}</p>
-                                        </div>
-                                    ))}
+            <section className="py-16 lg:py-24">
+                <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-20">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-3xl font-bold text-slate-900 mb-8">Why Join Us?</h2>
+                        <div className="grid gap-8">
+                            {benefits.map((item, i) => (
+                                <div key={i} className="flex gap-4">
+                                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 shrink-0">
+                                        <item.icon className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                                        <p className="text-slate-600">{item.desc}</p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div>
-                                <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Approach</h2>
-                                <div className="space-y-6">
-                                    {[
-                                        { title: "Diagnostic Test", desc: "We identify the student's current level and weak areas." },
-                                        { title: "Personalized Plan", desc: "Customized learning path to bridge gaps and advance." },
-                                        { title: "Regular Assessments", desc: "Weekly tests to track progress and retention." },
-                                        { title: "Parent Updates", desc: "Regular feedback sessions with parents." },
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex gap-4">
-                                            <div className="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold shrink-0">
-                                                {i + 1}
-                                            </div>
-                                            <div>
-                                                <h3 className="font-bold text-slate-900">{item.title}</h3>
-                                                <p className="text-slate-600 text-sm">{item.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                            ))}
                         </div>
 
-                        {/* Right: Sidebar Form */}
-                        <div className="lg:col-span-1">
-                            <div className="sticky top-24" id="enroll">
-                                <LeadForm variant="inline" className="border-green-200 shadow-xl" />
-                            </div>
+                        <div className="mt-12 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                            <h3 className="text-lg font-bold text-slate-900 mb-4">Topics Covered</h3>
+                            <ul className="space-y-3">
+                                {["Number Systems", "Algebra & Geometry", "Trigonometry", "Mensuration", "Statistics & Probability"].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-slate-700">
+                                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                    </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="lg:sticky lg:top-32 h-fit"
+                    >
+                        <div className="bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
+                            <h3 className="text-2xl font-bold text-slate-900 mb-2">Enroll Now</h3>
+                            <p className="text-slate-600 mb-6">Book a free demo class to see the magic.</p>
+                            <LeadForm variant="inline" themeColor="green" />
+                        </div>
+                    </motion.div>
                 </div>
             </section>
 

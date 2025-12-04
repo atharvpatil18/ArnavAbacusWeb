@@ -79,7 +79,7 @@ export default function FAQPage() {
                                         Our team is happy to help. Reach out to us directly.
                                     </p>
                                     <a href="tel:+919876543210" className="text-brand-600 font-bold hover:underline">
-                                        +91 98765 43210
+                                        +91 90219 24968
                                     </a>
                                 </div>
                                 <LeadForm variant="inline" />

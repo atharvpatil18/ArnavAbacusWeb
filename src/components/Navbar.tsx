@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "Programs", href: "/programs" },
+    { name: "Meet Mentor", href: "/mentor" },
     { name: "Achievements", href: "/achievements" },
     { name: "FAQs", href: "/faqs" },
     { name: "Contact", href: "/contact" },
@@ -32,7 +33,7 @@ export default function Navbar() {
             <div className="bg-brand-900 text-white py-2 text-xs md:text-sm relative z-50">
                 <div className="container mx-auto px-4 flex justify-between items-center">
                     <div className="flex items-center gap-6">
-                        <a href="tel:9021924968" className="flex items-center gap-2 hover:text-brand-200 transition-colors">
+                        <a href="https://wa.me/919021924968" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-brand-200 transition-colors">
                             <Phone className="w-3 h-3 md:w-4 md:h-4" />
                             <span>+91 90219 24968</span>
                         </a>
