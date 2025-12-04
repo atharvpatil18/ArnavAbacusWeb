@@ -20,14 +20,6 @@ export default function Hero() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="inline-flex items-center gap-2 bg-brand-900/50 border border-brand-700/50 rounded-full px-4 py-1.5 text-brand-300 text-sm font-medium mb-6">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-                            </span>
-                            Admissions Open for 2025 Batch
-                        </div>
-
                         <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
                             <span className="text-brand-500">Arnav Abacus Academy</span>
                             <br />

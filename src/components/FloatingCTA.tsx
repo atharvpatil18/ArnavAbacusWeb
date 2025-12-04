@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function FloatingCTA() {
     return (
         <motion.a
-            href="https://wa.me/919876543210?text=Hi,%20I'm%20interested%20in%20a%20free%20demo%20class"
+            href="https://wa.me/919021924968?text=Hi,%20I'm%20interested%20in%20a%20free%20demo%20class"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ scale: 0, opacity: 0 }}

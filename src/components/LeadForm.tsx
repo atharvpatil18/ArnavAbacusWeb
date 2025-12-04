@@ -18,10 +18,18 @@ export default function LeadForm({ variant = "inline", className = "" }: LeadFor
         setIsLoading(true);
 
         const formData = new FormData(e.currentTarget);
+        const parentName = formData.get("parentName") as string;
+        const childAge = formData.get("childAge") as string;
         const program = formData.get("program") as string;
 
-        // Mock API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        // WhatsApp Configuration
+        const phoneNumber = "919021924968"; // REPLACE WITH ACTUAL NUMBER
+        const message = `Hello, I'm interested in a Demo Class!
+Name: ${parentName}
+Child's Age: ${childAge}
+Program: ${program || "General"}`;
+
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
         // Track submission
         try {
@@ -31,11 +39,12 @@ export default function LeadForm({ variant = "inline", className = "" }: LeadFor
             console.error("Analytics error:", error);
         }
 
-        setIsLoading(false);
-        setIsSuccess(true);
-
-        // Reset success message after 5 seconds
-        setTimeout(() => setIsSuccess(false), 5000);
+        // Simulate brief delay for UX then redirect
+        setTimeout(() => {
+            setIsLoading(false);
+            window.open(whatsappUrl, '_blank');
+            setIsSuccess(true);
+        }, 1000);
     };
 
     if (isSuccess) {
@@ -47,9 +56,9 @@ export default function LeadForm({ variant = "inline", className = "" }: LeadFor
                     className="flex flex-col items-center gap-3"
                 >
                     <CheckCircle className="w-12 h-12 text-green-500" />
-                    <h3 className="text-xl font-bold text-green-800">Thank You!</h3>
+                    <h3 className="text-xl font-bold text-green-800">Redirecting to WhatsApp...</h3>
                     <p className="text-green-700">
-                        We have received your details. Our team will contact you shortly to schedule your free demo.
+                        Please continue the conversation on WhatsApp to book your slot.
                     </p>
                 </motion.div>
             </div>
@@ -115,18 +124,7 @@ export default function LeadForm({ variant = "inline", className = "" }: LeadFor
                 </div>
             </div>
 
-            <div>
-                <label htmlFor="phone" className="sr-only">WhatsApp Number</label>
-                <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="WhatsApp Number"
-                    required
-                    pattern="[0-9]{10}"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all"
-                />
-            </div>
+            {/* Phone input removed as we are redirecting to WhatsApp */}
 
             <button
                 type="submit"

@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import ProgramCard from "@/components/ProgramCard";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import CalendlyWidget from "@/components/CalendlyWidget";
+
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 
@@ -60,7 +60,7 @@ export default function Home() {
       </section>
 
       <TestimonialCarousel />
-      <CalendlyWidget />
+
       <Footer />
       <FloatingCTA />
     </main>

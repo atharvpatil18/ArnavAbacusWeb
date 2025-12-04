@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, MapPin, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
@@ -9,9 +10,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-2">
                         <Link href="/" className="flex items-center gap-2 mb-4">
-                            <div className="w-8 h-8 bg-brand-500 rounded flex items-center justify-center text-white font-bold">
-                                A
-                            </div>
+                            <Image src="/logo.jpg" alt="Arnav Abacus Academy" width={32} height={32} className="rounded" />
                             <span className="font-bold text-xl text-white">
                                 Arnav<span className="text-brand-500">Abacus</span>
                             </span>
@@ -72,14 +71,14 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-brand-500 shrink-0" />
-                                <a href="tel:+919999999999" className="hover:text-white">
-                                    +91 99999 99999
+                                <a href="tel:+919021924968" className="hover:text-white">
+                                    +91 90219 24968
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-brand-500 shrink-0" />
-                                <a href="mailto:info@arnavabacus.com" className="hover:text-white">
-                                    info@arnavabacus.com
+                                <a href="mailto:nehaatharv@gmail.com" className="hover:text-white">
+                                    nehaatharv@gmail.com
                                 </a>
                             </li>
                             <li className="flex items-start gap-3 mt-2">

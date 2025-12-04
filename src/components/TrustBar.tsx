@@ -1,45 +1,68 @@
-import { Trophy, Users, Award, Clock } from "lucide-react";
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const stats = [
-    {
-        icon: Users,
-        value: "500+",
-        label: "Happy Students",
-    },
-    {
-        icon: Trophy,
-        value: "50+",
-        label: "Competition Winners",
-    },
-    {
-        icon: Award,
-        value: "100%",
-        label: "Certified Trainers",
-    },
-    {
-        icon: Clock,
-        value: "8+",
-        label: "Years Experience",
-    },
+    { label: "Students Trained", value: 500, suffix: "+" },
+    { label: "Years of Experience", value: 8, suffix: "+" },
+    { label: "Competition Winners", value: 50, suffix: "+" },
+    { label: "Parent Satisfaction", value: 100, suffix: "%" },
 ];
+
+const Counter = ({ value, suffix }: { value: number; suffix: string }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+    useEffect(() => {
+        if (isInView) {
+            const duration = 2000; // 2 seconds
+            const steps = 60;
+            const stepTime = duration / steps;
+            const increment = value / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= value) {
+                    setCount(value);
+                    clearInterval(timer);
+                } else {
+                    setCount(Math.floor(current));
+                }
+            }, stepTime);
+
+            return () => clearInterval(timer);
+        }
+    }, [isInView, value]);
+
+    return (
+        <span ref={ref} className="font-bold text-3xl md:text-4xl text-brand-600">
+            {count}{suffix}
+        </span>
+    );
+};
 
 export default function TrustBar() {
     return (
-        <section className="bg-brand-50 py-12 border-b border-brand-100">
+        <section className="py-12 bg-white border-b border-slate-100">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     {stats.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center text-center group">
-                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-600 shadow-sm mb-3 group-hover:scale-110 transition-transform">
-                                <stat.icon className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-3xl font-bold text-slate-900 mb-1">
-                                {stat.value}
-                            </h3>
-                            <p className="text-sm text-slate-600 font-medium uppercase tracking-wide">
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            className="flex flex-col items-center"
+                        >
+                            <Counter value={stat.value} suffix={stat.suffix} />
+                            <p className="text-slate-600 font-medium mt-2 text-sm md:text-base">
                                 {stat.label}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

@@ -43,7 +43,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-slate-900 mb-1">Call Us</h3>
-                                        <p className="text-slate-600">+91 99999 99999</p>
+                                        <p className="text-slate-600">+91 90219 24968</p>
                                     </div>
                                 </div>
 
@@ -53,7 +53,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-slate-900 mb-1">Email Us</h3>
-                                        <p className="text-slate-600">info@arnavabacus.com</p>
+                                        <p className="text-slate-600">nehaatharv@gmail.com</p>
                                     </div>
                                 </div>
 
