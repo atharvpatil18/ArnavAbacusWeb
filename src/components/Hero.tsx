@@ -34,7 +34,7 @@ export default function Hero() {
                         <div className="space-y-4 mb-8">
                             {[
                                 "Certified & Experienced Trainers",
-                                "Personalized Attention (Small Batches)",
+                                // "Personalized Attention (Small Batches)",
                                 "Proven Results in Competitions",
                             ].map((item, index) => (
                                 <div key={index} className="flex items-center gap-3 text-slate-200">

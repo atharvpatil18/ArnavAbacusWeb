@@ -19,10 +19,10 @@ export default function Footer() {
                             Empowering children with the skills of tomorrow. Join the best Abacus and Vedic Math academy in Pune to boost concentration, speed, and confidence.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="hover:text-white transition-colors">
+                            <a href="https://www.facebook.com/groups/1031935784445726/?ref=share" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                                 <Facebook className="w-5 h-5" />
                             </a>
-                            <a href="#" className="hover:text-white transition-colors">
+                            <a href="https://www.instagram.com/lakshmi_narayan_1303?igsh=cDlwM2ZxNWltYXFr" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                                 <Instagram className="w-5 h-5" />
                             </a>
                         </div>
@@ -47,11 +47,11 @@ export default function Footer() {
                                     School Math
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/achievements" className="hover:text-brand-400 transition-colors">
                                     Hall of Fame
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
 
@@ -62,11 +62,11 @@ export default function Footer() {
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-brand-500 shrink-0 mt-1" />
                                 <span>
-                                    Flat no. 304, Creative Cameo,
+                                    Flat no. 3, Arnav Abacus Academy,
                                     <br />
-                                    near Park Street, Wakad,
+                                    Adv. Balaji Sagar Bungalow,
                                     <br />
-                                    Pune - 411057
+                                    Opp. Creative Cameo
                                 </span>
                             </li>
                             <li className="flex items-center gap-3">

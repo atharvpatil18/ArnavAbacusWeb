@@ -10,7 +10,7 @@ export default function AiQuizWidget() {
     const [question, setQuestion] = useState<{ text: string; answer: number } | null>(null);
     const [userAnswer, setUserAnswer] = useState<string>("");
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
-    const [timeLeft, setTimeLeft] = useState<number>(15);
+    const [timeLeft, setTimeLeft] = useState<number>(30);
 
     // Timer logic
     useEffect(() => {
@@ -33,25 +33,39 @@ export default function AiQuizWidget() {
             const b = Math.floor(Math.random() * 9) + 1;
             return { text: `${a} + ${b} = ?`, answer: a + b };
         } else if (age <= 9) {
-            // Double Digit Addition/Subtraction
-            const isAddition = Math.random() > 0.5;
-            const a = Math.floor(Math.random() * 40) + 10;
-            const b = Math.floor(Math.random() * 40) + 10;
-            return isAddition
-                ? { text: `${a} + ${b} = ?`, answer: a + b }
-                : { text: `${a + b} - ${b} = ?`, answer: a };
+            // Mental Math: Chain Addition/Subtraction
+            const a = Math.floor(Math.random() * 20) + 10;
+            const b = Math.floor(Math.random() * 10) + 1;
+            const c = Math.floor(Math.random() * 10) + 1;
+            const isChain = Math.random() > 0.5;
+
+            if (isChain) {
+                const op1 = Math.random() > 0.5 ? "+" : "-";
+                const ans = op1 === "+" ? a + b : a - b;
+                return { text: `${a} ${op1} ${b} = ?`, answer: ans };
+            } else {
+                return { text: `${a} + ${b} - ${c} = ?`, answer: a + b - c };
+            }
         } else {
-            // Multiplication (2-digit x 1-digit) or Division
-            const isMultiplication = Math.random() > 0.3;
-            if (isMultiplication) {
+            // Advanced Mental Math: Multiplication/Division or Long Chain
+            const type = Math.random();
+            if (type < 0.33) {
+            // Multiplication
                 const a = Math.floor(Math.random() * 15) + 5;
                 const b = Math.floor(Math.random() * 8) + 2;
                 return { text: `${a} × ${b} = ?`, answer: a * b };
-            } else {
+            } else if (type < 0.66) {
+                // Division
                 const b = Math.floor(Math.random() * 8) + 2;
                 const answer = Math.floor(Math.random() * 15) + 5;
                 const a = answer * b;
                 return { text: `${a} ÷ ${b} = ?`, answer: answer };
+            } else {
+                // Chain Operation (Mental Math focus)
+                const a = Math.floor(Math.random() * 50) + 10;
+                const b = Math.floor(Math.random() * 20) + 5;
+                const c = Math.floor(Math.random() * 10) + 5;
+                return { text: `${a} + ${b} - ${c} = ?`, answer: a + b - c };
             }
         }
     };
@@ -61,7 +75,7 @@ export default function AiQuizWidget() {
         if (!age) return;
         const q = generateQuestion(parseInt(age));
         setQuestion(q);
-        setTimeLeft(15); // Reset timer
+        setTimeLeft(30); // Reset timer to 30s
         setStep("quiz");
     };
 
@@ -150,7 +164,7 @@ export default function AiQuizWidget() {
                                             <motion.div
                                                 className={`h-full ${timeLeft <= 5 ? 'bg-red-500' : 'bg-brand-500'}`}
                                                 initial={{ width: "100%" }}
-                                                animate={{ width: `${(timeLeft / 15) * 100}%` }}
+                                                animate={{ width: `${(timeLeft / 30) * 100}%` }}
                                                 transition={{ duration: 1, ease: "linear" }}
                                             />
                                         </div>
@@ -212,7 +226,7 @@ export default function AiQuizWidget() {
                                                     setStep("age");
                                                     setAge("");
                                                     setUserAnswer("");
-                                                    setTimeLeft(15);
+                                                    setTimeLeft(30);
                                                 }}
                                                 className="px-8 py-3 rounded-full font-semibold text-slate-600 hover:bg-slate-100 transition-all"
                                             >

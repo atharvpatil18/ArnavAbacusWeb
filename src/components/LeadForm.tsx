@@ -77,7 +77,7 @@ Program: ${program || "General"}`;
                     Book a Free Demo Class
                 </h3>
                 <p className={`text-sm ${variant === "hero" ? "text-white/80" : "text-slate-500"}`}>
-                    Unlock your child's potential today!
+                    Unlock your child's potential today! <span className="font-bold text-yellow-300 block mt-1">Join after demo & get 10% OFF!</span>
                 </p>
             </div>
 
