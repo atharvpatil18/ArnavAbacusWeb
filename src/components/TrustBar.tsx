@@ -6,6 +6,7 @@ import { useRef, useEffect, useState } from "react";
 const stats = [
     { label: "Students Trained", value: 200, suffix: "+" },
     { label: "Years of Experience", value: 3, suffix: "+" },
+    { label: "Achievements Won", value: 100, suffix: "+" },
     { label: "Parent Satisfaction", value: 100, suffix: "%" },
 ];
 
