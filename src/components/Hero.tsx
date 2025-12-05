@@ -34,8 +34,10 @@ export default function Hero() {
                         <div className="space-y-4 mb-8">
                             {[
                                 "Certified & Experienced Trainers",
-                                // "Personalized Attention (Small Batches)",
                                 "Proven Results in Competitions",
+                                "Personalized Attention",
+                                "Regular Progress Tracking",
+                                "Boosts Focus & Confidence",
                             ].map((item, index) => (
                                 <div key={index} className="flex items-center gap-3 text-slate-200">
                                     <CheckCircle className="w-5 h-5 text-brand-500 shrink-0" />
