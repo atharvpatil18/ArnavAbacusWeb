@@ -44,21 +44,7 @@ export default function Hero() {
                             ))}
                         </div>
 
-                        <div className="flex flex-wrap gap-4">
-                            <div className="flex -space-x-3">
-                                {[1, 2, 3, 4].map((i) => (
-                                    <div key={i} className="w-10 h-10 rounded-full border-2 border-slate-900 bg-slate-700 flex items-center justify-center text-xs text-white">
-                                        U{i}
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="flex flex-col justify-center">
-                                <div className="flex items-center gap-1 text-yellow-400 text-sm">
-                                    ★★★★★
-                                </div>
-                                <p className="text-xs text-slate-400">Trusted by 500+ Parents</p>
-                            </div>
-                        </div>
+
                     </motion.div>
 
                     {/* Right Column: Form */}
